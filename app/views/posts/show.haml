@@ -7,6 +7,16 @@
 
   .post__body
     = post.body
-  .post__tags-list.tagsinput
-    - post.tags_array.each do |tag|
-      = content_tag :span, tag, class: 'tag'
+  .post__tags-wrapper
+    .post__tags-list.tagsinput
+      - post.tags_array.each do |tag|
+        = content_tag :span, tag, class: 'tag'
+
+  .post__comments
+    comments
+    %small
+    = "(#{post.comments.count}):"
+    = render partial: "comment", collection: post.comments
+
+  = link_to "add comment", new_post_comment_path(post), class: 'post__button--comment'
+

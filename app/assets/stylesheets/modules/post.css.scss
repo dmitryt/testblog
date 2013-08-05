@@ -8,7 +8,15 @@
   }
 }
 
-.post__button--add, .post__button--edit {
+.post__tags-wrapper {
+  overflow: hidden;
+}
+
+.post__comments {
+  margin-top: 10px;
+}
+
+.post__button--add, .post__button--edit, post__button--comment {
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-small;
