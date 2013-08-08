@@ -1,3 +1,9 @@
 .post--full-size
   .post__body
-    = comment.body
+    %span.user
+      = comment.user.name
+      ,
+    %span.date
+      = comment.created_at
+    .content
+      = comment.body

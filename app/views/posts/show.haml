@@ -16,7 +16,7 @@
     comments
     %small
     = "(#{post.comments.count}):"
-    = render partial: "comment", collection: post.comments
+    = render partial: "comment", collection: post.comments.default
 
   = link_to "add comment", new_post_comment_path(post), class: 'post__button--comment'
 

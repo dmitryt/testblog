@@ -8,8 +8,10 @@ class Comment
 
   validates_presence_of :body
 
-  belongs_to :user
+  embeds_one :user
   belongs_to :post, index: true
+
+  scope :default, order_by(:created_at => :desc)
 
 
   private 

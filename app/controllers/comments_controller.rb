@@ -7,8 +7,6 @@ class CommentsController < ApplicationController
   end
 
   def new
-    post = PostDecorator.find(params[:post_id])
-    @comment = post.comments.build
   end
 
   def edit
@@ -31,7 +29,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    if @comment.save
+    comment.post = post
+    comment.user = current_user
+    if comment.save
       redirect_to post
     else
       render :new

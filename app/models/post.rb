@@ -12,6 +12,8 @@ class Post
   has_many :comments, :dependent => :destroy
   belongs_to :user
 
+  accepts_nested_attributes_for :comments, :reject_if => proc { |attrs| attrs['body'].blank?  }
+
   default_scope ne(archived: true)
 
   def archive!

@@ -13,6 +13,8 @@ class PostsController < ApplicationController
   end
 
   def update
+    p '!!!!!!!!!!!!!!'
+    p params 
     if post.save
       render action: :index
     else
