@@ -4,7 +4,7 @@ class Comment
   
   field :body, type: String
   field :abusive, type: Boolean, default: false
-  field :votes, type: Hash
+  field :votes, type: Array
 
   validates_presence_of :body
 
@@ -17,5 +17,6 @@ class Comment
   private 
 
   def vote(value = 1)
+    voted_users = votes.map{|v| v.uid }
   end
 end
