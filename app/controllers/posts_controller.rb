@@ -13,8 +13,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    p '!!!!!!!!!!!!!!'
-    p params 
     if post.save
       render action: :index
     else
@@ -36,6 +34,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    post.user = current_user
     if post.save
       redirect_to action: :index
     else

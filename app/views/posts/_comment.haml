@@ -1,5 +1,15 @@
-.post--full-size
-  .post__body
+- if (!comment.abusive || comment.post.owner?(current_user))
+  .comment__body
+    .votes
+      %span.karma{:class => ("abusive" if comment.karma < 0)}
+        = "#{(comment.karma > 0 ? '+' : '') + comment.karma.to_s}"   
+      - unless comment.voter? current_user
+        %span.controls
+          = link_to "&uarr;".html_safe, post_comment_vote_up_path(comment.post, comment)
+          &mdash;
+          = link_to "&darr;".html_safe, post_comment_vote_down_path(comment.post, comment)
+      -if comment.abusive
+        = link_to "Reset abusing", post_comment_reset_abusing_path(comment.post, comment)
     %span.user
       = comment.user.name
       ,

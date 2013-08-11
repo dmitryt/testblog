@@ -38,4 +38,22 @@ class CommentsController < ApplicationController
     end
   end
 
+  def vote_up
+    comment.vote_up current_user
+    redirect_to post
+  end
+
+  def vote_down
+    comment.vote_down current_user
+    redirect_to post
+  end
+
+  def reset_abusing
+    if comment.post.owner? current_user
+      comment.abusive = false
+      comment.save
+    end
+    redirect_to post
+  end
+
 end

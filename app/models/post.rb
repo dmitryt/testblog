@@ -24,4 +24,7 @@ class Post
     tags.split(',').map &:strip if tags
   end
 
+  def owner?(_user)
+    user == _user
+  end
 end
